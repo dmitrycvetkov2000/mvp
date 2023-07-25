@@ -102,13 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				0AA27C942A6F4A0F00763323 /* AppDelegate.swift */,
-				0AA27C982A6F4A0F00763323 /* MainViewController.swift */,
+				0AA27CC82A6F5DB400763323 /* ModuleBuilder.swift */,
+				0AA27CCA2A6F662200763323 /* MainModule */,
 				0AA27C9D2A6F4A1200763323 /* Assets.xcassets */,
 				0AA27C9F2A6F4A1200763323 /* LaunchScreen.storyboard */,
 				0AA27CA22A6F4A1200763323 /* Info.plist */,
-				0AA27CC42A6F4AE500763323 /* Person.swift */,
-				0AA27CC62A6F4D2100763323 /* MainPresenter.swift */,
-				0AA27CC82A6F5DB400763323 /* ModuleBuilder.swift */,
 			);
 			path = mvp;
 			sourceTree = "<group>";
@@ -128,6 +126,40 @@
 				0AA27CB72A6F4A1300763323 /* mvpUITestsLaunchTests.swift */,
 			);
 			path = mvpUITests;
+			sourceTree = "<group>";
+		};
+		0AA27CCA2A6F662200763323 /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				0AA27CCB2A6F663500763323 /* Model */,
+				0AA27CCC2A6F663C00763323 /* View */,
+				0AA27CCD2A6F664200763323 /* Presenter */,
+			);
+			path = MainModule;
+			sourceTree = "<group>";
+		};
+		0AA27CCB2A6F663500763323 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0AA27CC42A6F4AE500763323 /* Person.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0AA27CCC2A6F663C00763323 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AA27C982A6F4A0F00763323 /* MainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AA27CCD2A6F664200763323 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0AA27CC62A6F4D2100763323 /* MainPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

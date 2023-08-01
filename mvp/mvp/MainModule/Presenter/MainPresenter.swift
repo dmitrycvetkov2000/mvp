@@ -12,21 +12,28 @@ protocol MainViewProtocol: AnyObject {
 }
 
 protocol MainViewPresenterProtocol: AnyObject {
-    init(view: MainViewProtocol, person: Person)
+    init(view: MainViewProtocol, person: Person, router: RouterProtocol)
     func showGreeting()
+    func showSecond()
 }
 
 class MainPresenter: MainViewPresenterProtocol {
-    let view: MainViewProtocol
+    weak var view: MainViewProtocol?
     let person: Person
+    var router: RouterProtocol?
     
-    required init(view: MainViewProtocol, person: Person) {
+    required init(view: MainViewProtocol, person: Person, router: RouterProtocol) {
         self.view = view
         self.person = person
+        self.router = router
     }
     
     func showGreeting() {
         let greet = person.firstName + " " + person.lastName
-        self.view.setGreeting(greeting: greet)
+        self.view?.setGreeting(greeting: greet)
+    }
+    
+    func showSecond() {
+        router?.showSecond()
     }
 }

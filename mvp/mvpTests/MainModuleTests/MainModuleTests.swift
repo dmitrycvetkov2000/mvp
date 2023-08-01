@@ -8,7 +8,7 @@
 import XCTest
 @testable import mvp
 
-class MockView: MainViewProtocol {
+class MockMainView: MainViewProtocol {
     var greeting: String?
     func setGreeting(greeting: String) {
         self.greeting = greeting
@@ -16,14 +16,16 @@ class MockView: MainViewProtocol {
 }
 
 final class MainModuleTests: XCTestCase {
-    var view: MockView!
+    var view: MockMainView!
     var model: Person!
+    var router: RouterProtocol!
     var presenter: MainPresenter!
     
     override func setUpWithError() throws {
-        view = MockView()
+        view = MockMainView()
         model = Person(firstName: "Fir", lastName: "Sec")
-        presenter = MainPresenter(view: view, person: model)
+        router = Router(navigationController: UINavigationController(), assebleBuilder: ModuleBuilder())
+        presenter = MainPresenter(view: view, person: model, router: router)
     }
 
     override func tearDownWithError() throws {

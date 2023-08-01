@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     let label = UILabel()
     let button = UIButton()
+    let buttonNext = UIButton()
     var presenter: MainViewPresenterProtocol?
     
     override func viewDidLoad() {
@@ -17,6 +18,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .blue
         createLabel()
         createButton()
+        createButtonNext()
     }
 }
 
@@ -45,7 +47,7 @@ extension MainViewController {
         view.addSubview(button)
         
         NSLayoutConstraint.activate([
-            button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             button.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
             button.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20),
             button.heightAnchor.constraint(equalToConstant: 40)
@@ -59,5 +61,26 @@ extension MainViewController {
     }
     @objc func showTextLabel() {
         presenter?.showGreeting()
+    }
+    
+    func createButtonNext() {
+        buttonNext.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonNext)
+        
+        NSLayoutConstraint.activate([
+            buttonNext.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            buttonNext.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40),
+            buttonNext.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -40),
+            buttonNext.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        buttonNext.setTitleColor(.white, for: .normal)
+        buttonNext.setTitle("NextScreen", for: .normal)
+        buttonNext.backgroundColor = .black
+        
+        buttonNext.addTarget(self, action: #selector(goNext), for: .touchUpInside)
+    }
+    @objc func goNext() {
+        presenter?.showSecond()
     }
 }
